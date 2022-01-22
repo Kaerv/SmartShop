@@ -1,0 +1,16 @@
+{
+    "name": "kaerv/smartshop",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Smartshop\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Krystian Kordal",
+            "email": "34897885+Kaerv@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
