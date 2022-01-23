@@ -3,8 +3,11 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Smartshop\\": "src/"
-        }
+            "SmartShop\\": "src/"
+        },
+        "files": [
+            "src/helpers/template.php"
+        ]
     },
     "authors": [
         {
