@@ -11,4 +11,9 @@ if($env == "development") {
 
 define('_TPL_DIR_', __DIR__ . '/templates/');
 
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'smartshop');
+define('DB_USER', 'root');
+define('DB_PASS', 'password');
+
 require_once "vendor/autoload.php";
