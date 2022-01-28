@@ -22,6 +22,11 @@ class Db
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
+    public function __destruct()
+    {
+        unset($this->conn);
+    }
+
     /**
      * Executes query and returns result
      * 

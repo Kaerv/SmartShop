@@ -35,7 +35,8 @@ class CartController extends Controller
      */
     public function postProcess()
     {
-        $cart = new Cart();
+        $cart = new Cart($this->id_cart);
+        $cart->addProduct($_POST['id_product']);
         header('Location: '. Link::getProductListingLink());
     }
 }

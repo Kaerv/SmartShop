@@ -35,6 +35,24 @@ class Cart
     }
 
     /**
+     * Adds product to cart
+     * 
+     * @param int $id_product Product ID
+     * 
+     * @return int ID of cart content
+     */
+    public function addProduct($id_product)
+    {
+        $db = new Db();
+
+        return $db->insert('ss_cart_content', [
+            'id_cart' => $this->id,
+            'id_product' => $id_product,
+            'quantity' => 1
+        ]);
+    }
+
+    /**
      * Creates in db new cart
      * 
      * @return Cart New cart
