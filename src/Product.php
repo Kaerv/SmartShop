@@ -25,7 +25,7 @@ class Product
      */
     public function __construct(int $id, string $name = null, float $price = null)
     {
-        $db = new Db;
+        $db = Db::getInstance();
         $this->id = $id;
 
         if ($name == null || $price == null) {
@@ -46,7 +46,7 @@ class Product
      */
     public static function getProducts()
     {
-        $db = new Db;
+        $db = Db::getInstance();
         $data = $db->query("SELECT id_product as id, name as name, price as price FROM ss_product");
 
         $products = array();

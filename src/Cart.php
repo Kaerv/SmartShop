@@ -34,7 +34,7 @@ class Cart
      */
     protected function loadCartContent()
     {
-        $db = new Db();
+        $db = Db::getInstance();
         $result = $db->query("SELECT * FROM ss_cart_content WHERE id_cart = $this->id");
         
         $cart_content = array();
@@ -74,7 +74,7 @@ class Cart
         if($cart_content !== false) {
             $this->updateQuantity($cart_content['id_cart_content'], $cart_content['quantity'] + 1);
         } else {
-            $db = new Db();
+            $db = Db::getInstance();
             $result = $db->insert('ss_cart_content', [
                 'id_cart' => $this->id,
                 'id_product' => $id_product,
@@ -95,7 +95,7 @@ class Cart
      */
     protected function getCartContentByProductId($id_product)
     {
-        $db = new Db();
+        $db = Db::getInstance();
 
         $cart_content = $db->getRow("SELECT id_cart_content, quantity FROM ss_cart_content WHERE id_product = $id_product AND id_cart = $this->id");
 
@@ -110,7 +110,7 @@ class Cart
      */
     protected function updateQuantity($id_cart_content, $quantity)
     {
-        $db = new Db();
+        $db = Db::getInstance();
 
         $result = $db->update('ss_cart_content', ['quantity' => $quantity], "id_cart_content = $id_cart_content");
     }
@@ -122,7 +122,7 @@ class Cart
      */
     public static function create()
     {
-        $db = new Db();
+        $db = Db::getInstance();
         $result = $db->insert('ss_cart', []);
 
         if ($result !== false) {

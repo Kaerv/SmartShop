@@ -10,6 +10,8 @@ use FFI\Exception;
  */
 class Db
 {
+    /** @var Db Class instance */
+    public static $instance;
 
     /** @var PDO PDO connection */
     public PDO $conn;
@@ -126,7 +128,21 @@ class Db
         if($stmt = $this->conn->query($sql)) {
             return $stmt->rowCount();
         }
-        
+
         return false;
+    }
+
+    /**
+     * Returns instance of Db class
+     * 
+     * @return Db Db instance
+     */
+    public static function getInstance()
+    {
+        if (!self::$instance) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
     }
 }
