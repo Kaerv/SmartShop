@@ -102,4 +102,31 @@ class Db
 
         return false;
     }
+
+    /**
+     * Executes update sql query
+     * 
+     * @param string $table SQL table where the data is to be updated
+     * @param array $data Data to be updated
+     * @param string $where WHERE statement
+     * 
+     * @return int|false Rows affected or false on query fail
+     */
+    public function update($table, $data, $where)
+    {
+        $sql = "UPDATE $table SET ";
+
+        $updates = array();
+        foreach ($data as $key=>$value) {
+            $updates[] = "$key = $value";
+        }
+        $sql .= implode(',', $updates);
+        $sql .= " WHERE $where";
+
+        if($stmt = $this->conn->query($sql)) {
+            return $stmt->rowCount();
+        }
+        
+        return false;
+    }
 }

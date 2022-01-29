@@ -29,10 +29,11 @@
 <body>
     <h2>Cart</h2>
     <table>
-        <?php foreach($cart_content as $product): ?>
+        <?php foreach($cart_content as $row): ?>
             <tr>
-                <td><?= $product->name ?></td>
-                <td><?= $product->price ?></td>
+                <td><?= $row['name'] ?></td>
+                <td><?= $row['price'] ?></td>
+                <td><?= $row['quantity'] ?> szt.</td>
             </tr>
         <?php endforeach; ?>
     </table>
