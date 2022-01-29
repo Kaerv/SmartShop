@@ -27,6 +27,16 @@
     </style>
 </head>
 <body>
+    <h2>Cart</h2>
+    <table>
+        <?php foreach($cart_content as $product): ?>
+            <tr>
+                <td><?= $product->name ?></td>
+                <td><?= $product->price ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+    <p></p>
     <?php foreach($products as $product): ?>
         <article class="product">
             <div class="product-name"><?= $product->name ?></div>

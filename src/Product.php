@@ -29,7 +29,7 @@ class Product
         $this->id = $id;
 
         if ($name == null || $price == null) {
-            $data = $db->query("SELECT name, price FROM ss_product WHERE id_product = $id");
+            $data = $db->getRow("SELECT name, price FROM ss_product WHERE id_product = $id");
 
             $this->name = $data['name'];
             $this->price = $data['price'];

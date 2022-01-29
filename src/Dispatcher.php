@@ -19,6 +19,8 @@ class Dispatcher
 
         $controller = new $controllerName();
 
+        Cart::init();
+
         echo $controller->init();
     }
     
