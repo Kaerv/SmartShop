@@ -45,7 +45,8 @@ class Cart
                 'id_product' => $product->id,
                 'name' => $product->name,
                 'price' => $product->price,
-                'quantity' => $cart_el['quantity']
+                'quantity' => $cart_el['quantity'],
+                'subtotal' => $product->price * $cart_el['quantity'],
             );
         }
         return $cart_content;

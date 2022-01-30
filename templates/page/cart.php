@@ -13,6 +13,9 @@
                 </form>
             </td>
             <td>
+                <?= $row['subtotal'] ?>  zł
+            </td>
+            <td>
                 <form action="<?= $cart_url ?>" method="POST">
                     <input type="hidden" name="id_product" value="<?= $row['id_product'] ?>">
                     <input type="submit" name="remove_from_cart" value="Delete">
