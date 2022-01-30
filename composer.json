@@ -6,7 +6,8 @@
             "SmartShop\\": "src/"
         },
         "files": [
-            "src/functions/template.php"
+            "src/functions/template.php",
+            "src/functions/hook.php"
         ]
     },
     "authors": [

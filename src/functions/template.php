@@ -26,5 +26,14 @@ function getTemplate(string $file, array $args = array()) {
     } else {
         return "";
     }
+}
 
+/**
+ * Prints content of template file
+ * 
+ * @param string $template Path to template file
+ */
+function template($template) {
+    $template = str_replace(".php", "", $template);
+    include _TPL_DIR_ . "$template.php";
 }

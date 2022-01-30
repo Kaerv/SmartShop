@@ -14,14 +14,26 @@ class Dispatcher
      */
     public static function dispatch()
     {
+        self::loadControllers();
         $controllerName = ($_REQUEST['controller'] ?? "ProductListing") . "Controller";
-        require_once(__DIR__ . "/Controller/$controllerName.php");
 
         $controller = new $controllerName();
 
+        Hook::init();
         Cart::init();
 
         echo $controller->init();
+    }
+
+    private static function loadControllers()
+    {
+        $controllers = scandir(__DIR__ . "/Controller");
+
+        foreach ($controllers as $controller) {
+            if (strpos($controller, "Controller") !== false) {
+                require_once(__DIR__ . "/Controller/$controller");
+            }
+        }
     }
     
 }

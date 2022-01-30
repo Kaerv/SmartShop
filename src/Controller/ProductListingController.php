@@ -10,17 +10,24 @@ use SmartShop\Cart;
  */
 class ProductListingController extends Controller
 {
+    /** 
+     * Class constructor
+     */
+    public function __construct()
+    {
+        $this->template = "page/listing";
+    }
+
     /**
      * {@inheritdoc}
      */
     public function display()
     {
-        $cart = Cart::getCurrentCart();
-
-        return getTemplate("listing", $args = array(
-            'cart_content' => $cart->getCartContent(), 
+        $this->assignTplVars(array(
             'products' => Product::getProducts(),
             'add_to_cart_url' => Link::getAddToCartLink()
         ));
+
+        return parent::display();
     }
 }
