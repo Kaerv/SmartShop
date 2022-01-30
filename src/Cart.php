@@ -72,7 +72,7 @@ class Cart
     {
         $cart_content = $this->getCartContentByProductId($id_product);
         if($cart_content !== false) {
-            $this->updateQuantity($cart_content['id_cart_content'], $cart_content['quantity'] + 1);
+            $result = $this->updateQuantity($cart_content['id_cart_content'], $cart_content['quantity'] + 1);
         } else {
             $db = Db::getInstance();
             $result = $db->insert('ss_cart_content', [
@@ -97,6 +97,8 @@ class Cart
         $db = Db::getInstance();
 
         $db->query("DELETE FROM ss_cart_content WHERE id_product = $id_product AND id_cart = $this->id");
+
+        $this->cart_content = $this->loadCartContent();
     }
 
     /**
@@ -126,6 +128,8 @@ class Cart
         $db = Db::getInstance();
 
         $result = $db->update('ss_cart_content', ['quantity' => $quantity], "id_cart_content = $id_cart_content");
+
+        $this->cart_content = $this->loadCartContent();
     }
 
     /**

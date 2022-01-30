@@ -35,5 +35,5 @@ function getTemplate(string $file, array $args = array()) {
  */
 function template($template) {
     $template = str_replace(".php", "", $template);
-    include _TPL_DIR_ . "$template.php";
+    return _TPL_DIR_ . $template . ".php";
 }

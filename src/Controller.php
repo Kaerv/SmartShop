@@ -18,6 +18,17 @@ abstract class Controller
     /** @var array List of hooks */
     public static $hooks = [];
 
+    /**
+     * Class constructor
+     */
+    public function __construct()
+    {
+        $this->assignTplVars(array(
+            'nav_listing_url' => Link::getControllerLink('ProductListing'),
+            'nav_cart_url' => Link::getControllerLink('cart')
+        ));
+    }
+
     public function init()
     {
         $output = $this->postProcess();

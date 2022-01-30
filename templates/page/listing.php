@@ -1,4 +1,4 @@
-<?php template('partials/header') ?>
+<?php include(template('partials/header')) ?>
 
 <h2>Products</h2>
 <?php foreach($products as $product): ?>
@@ -14,4 +14,4 @@
     </article>
 <?php endforeach; ?>
 
-<?php template('partials/footer') ?>
+<?php include(template('partials/footer')) ?>

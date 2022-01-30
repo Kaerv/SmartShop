@@ -26,4 +26,8 @@
     </style>
 </head>
 <body>
+    <nav>
+        <a href="<?= $nav_listing_url ?>">Products</a>
+        <a href="<?= $nav_cart_url ?>">Cart</a>
+    </nav>
     <?php hook('header') ?>

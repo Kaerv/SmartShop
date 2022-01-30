@@ -15,6 +15,7 @@ class ProductListingController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->template = "page/listing";
     }
 
