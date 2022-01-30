@@ -23,7 +23,12 @@ class CartController extends Controller
     public function postProcess()
     {
         $cart = Cart::getCurrentCart();
-        $cart->addProduct($_POST['id_product']);
+        if(isset($_POST['add_to_cart'])) {
+            $cart->addProduct($_POST['id_product']);
+        } elseif(isset($_POST['remove_from_cart'])) {
+            $cart->removeProduct($_POST['id_product']);
+        }
+
         header('Location: '. Link::getProductListingLink());
     }
 
@@ -31,6 +36,7 @@ class CartController extends Controller
     {
         $cart = Cart::getCurrentCart();
         return getTemplate('partials/cart', array(
+            'cart_url' => Link::getControllerLink('Cart'),
             'cart_content' => $cart->getCartContent(), 
         ));
     }

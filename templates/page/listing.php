@@ -8,7 +8,7 @@
         <div class="product-add-to-cart">
             <form action="<?= $add_to_cart_url ?>" method="POST">
                 <input type="hidden" name="id_product" value="<?= $product->id ?>">
-                <input type="submit" name="add-to-cart" value="Dodaj do koszyka">
+                <input type="submit" name="add_to_cart" value="Dodaj do koszyka">
             </form>
         </div>
     </article>

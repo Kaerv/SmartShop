@@ -87,6 +87,19 @@ class Cart
     }
 
     /**
+     * Removes product from cart
+     * 
+     * @param int $id_product Product ID to be removed
+     */
+    public function removeProduct($id_product)
+    {
+        $cart_content = $this->getCartContentByProductId($id_product);
+        $db = Db::getInstance();
+
+        $db->query("DELETE FROM ss_cart_content WHERE id_product = $id_product AND id_cart = $this->id");
+    }
+
+    /**
      * Gets product from cart by id product if exists
      * 
      * @param int $id_product Product ID

@@ -15,7 +15,17 @@ class Link
      */
     public static function getAddToCartLink() : string
     {
-        return self::getBaseUrl() . '?controller=Cart';
+        return self::getControllerLink('Cart');
+    }
+
+    /**
+     * Returns url to Controller
+     * 
+     * @return string Url to Controller
+     */
+    public static function getControllerLink($name) : string
+    {
+        return self::getBaseUrl() . "?controller=$name";
     }
 
     /**
