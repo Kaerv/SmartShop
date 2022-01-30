@@ -7,7 +7,7 @@
             <td><?= $row['price'] ?></td>
             <td>
                 <form action="<?= $cart_url ?>" method="POST">
-                    <input type="number" value="<?= $row['quantity'] ?>">
+                    <input type="number" value="<?= $row['quantity'] ?>" name="quantity">
                     <input type="hidden" name="id_product" value="<?= $row['id_product'] ?>">
                     <input type="submit" name="update_quantity" value="Update">
                 </form>

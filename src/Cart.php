@@ -108,7 +108,7 @@ class Cart
      * 
      * @return array|false Cart content where product exists or false when product is not in the cart
      */
-    protected function getCartContentByProductId($id_product)
+    public function getCartContentByProductId($id_product)
     {
         $db = Db::getInstance();
 
@@ -123,13 +123,15 @@ class Cart
      * @param int $id_cart_content Cart content id
      * @param int $quantity New quantity for cart content
      */
-    protected function updateQuantity($id_cart_content, $quantity)
+    public function updateQuantity($id_cart_content, $quantity)
     {
         $db = Db::getInstance();
 
-        $result = $db->update('ss_cart_content', ['quantity' => $quantity], "id_cart_content = $id_cart_content");
+        if($quantity > 0) {
+            $result = $db->update('ss_cart_content', ['quantity' => $quantity], "id_cart_content = $id_cart_content");
 
-        $this->cart_content = $this->loadCartContent();
+            $this->cart_content = $this->loadCartContent();
+        }
     }
 
     /**

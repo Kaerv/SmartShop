@@ -44,6 +44,9 @@ class CartController extends Controller
             $cart->addProduct($_POST['id_product']);
         } elseif(isset($_POST['remove_from_cart'])) {
             $cart->removeProduct($_POST['id_product']);
+        }elseif(isset($_POST['update_quantity'])) {
+            $cart_content = $cart->getCartContentByProductId($_POST['id_product']);
+            $cart->updateQuantity($cart_content['id_cart_content'], $_POST['quantity']);
         }
     }
 }
