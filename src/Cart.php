@@ -63,6 +63,21 @@ class Cart
     }
 
     /**
+     * Returns total amount for cart content
+     * 
+     * @return float Total amount
+     */
+    public function getCartTotal()
+    {
+        $total = 0;
+        foreach ($this->cart_content as $row) {
+            $total += $row['subtotal'];
+        }
+
+        return number_format($total, 2, '.', ' ');
+    }
+
+    /**
      * Adds product to cart
      * 
      * @param int $id_product Product ID

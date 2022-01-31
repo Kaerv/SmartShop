@@ -29,6 +29,7 @@ class CartController extends Controller
         $this->assignTplVars(array(
             'cart_url' => Link::getControllerLink('Cart'),
             'cart_content' => $cart->getCartContent(), 
+            'cart_total' => $cart->getCartTotal()
         ));
 
         return parent::display();

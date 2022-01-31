@@ -24,4 +24,6 @@
         </tr>
     <?php endforeach; ?>
 </table>
+<h2>Total</h2>
+<h3><?= $cart_total ?> zł</h3>
 <?php include(template('partials/footer')) ?>
