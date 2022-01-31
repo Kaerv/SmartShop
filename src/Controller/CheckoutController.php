@@ -3,6 +3,7 @@
 use SmartShop\Cart;
 use SmartShop\Controller;
 use SmartShop\Link;
+use SmartShop\Price;
 
 /**
  * Displays checkout page and processes orders
@@ -32,7 +33,7 @@ class CheckoutController extends Controller
 
         $this->assignTplVars(array(
             'checkout_url' => Link::getControllerLink('Checkout'),
-            'cart_total' => $cart->getCartTotal()
+            'cart_total' => Price::format($cart->getCartTotal()) 
         ));
 
         return parent::display();

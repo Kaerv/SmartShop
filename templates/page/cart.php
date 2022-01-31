@@ -4,7 +4,7 @@
     <?php foreach($cart_content as $row): ?>
         <tr>
             <td><?= $row['name'] ?></td>
-            <td><?= $row['price'] ?></td>
+            <td><?= $row['formatted_price'] ?></td>
             <td>
                 <form action="<?= $cart_url ?>" method="POST">
                     <input type="number" value="<?= $row['quantity'] ?>" name="quantity">
@@ -13,7 +13,7 @@
                 </form>
             </td>
             <td>
-                <?= $row['subtotal'] ?>  zł
+                <?= $row['formatted_subtotal'] ?>
             </td>
             <td>
                 <form action="<?= $cart_url ?>" method="POST">
@@ -25,6 +25,6 @@
     <?php endforeach; ?>
 </table>
 <h2>Total</h2>
-<h3><?= $cart_total ?> zł</h3>
+<h3><?= $cart_total ?></h3>
 <a href="<?= $checkout_url ?>">Go to checkout</a>
 <?php include(template('partials/footer')) ?>

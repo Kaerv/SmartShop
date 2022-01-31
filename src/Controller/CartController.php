@@ -4,6 +4,7 @@ use SmartShop\Controller;
 use SmartShop\Link;
 use SmartShop\Cookie;
 use SmartShop\Cart;
+use SmartShop\Price;
 
 class CartController extends Controller
 {
@@ -27,7 +28,7 @@ class CartController extends Controller
             'cart_url' => Link::getControllerLink('Cart'),
             'checkout_url' => Link::getControllerLink('Checkout'),
             'cart_content' => $cart->getCartContent(), 
-            'cart_total' => $cart->getCartTotal()
+            'cart_total' => Price::format($cart->getCartTotal())
         ));
 
         return parent::display();

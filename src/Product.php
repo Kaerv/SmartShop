@@ -33,9 +33,11 @@ class Product
 
             $this->name = $data['name'];
             $this->price = $data['price'];
+            $this->formatted_price = Price::format($data['price']);
         } else {
             $this->name = $name;
             $this->price = $price;
+            $this->formatted_price = Price::format($price);
         }
     }
     

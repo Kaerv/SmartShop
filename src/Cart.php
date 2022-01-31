@@ -45,8 +45,10 @@ class Cart
                 'id_product' => $product->id,
                 'name' => $product->name,
                 'price' => $product->price,
+                'formatted_price' => $product->formatted_price,
                 'quantity' => $cart_el['quantity'],
                 'subtotal' => $product->price * $cart_el['quantity'],
+                'formatted_subtotal' => Price::format($product->price * $cart_el['quantity'])
             );
         }
         return $cart_content;
@@ -74,7 +76,7 @@ class Cart
             $total += $row['subtotal'];
         }
 
-        return number_format($total, 2, '.', ' ');
+        return $total;
     }
 
     /**
