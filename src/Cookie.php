@@ -33,4 +33,21 @@ class Cookie
     {
         setcookie($key, serialize($value), time() + (86400 * 30), "/");
     }
+
+    /**
+     * Removes cookie
+     * 
+     * @param string $key Key of cookie to be removed
+     */
+    public static function unset($key)
+    {
+        if (isset($_COOKIE[$key])) {
+            unset($_COOKIE[$key]);
+            setcookie($key, null, -1, '/');
+            
+            return true;
+        }
+
+        return false;
+    }
 }

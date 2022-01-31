@@ -7,9 +7,6 @@ use SmartShop\Cart;
 
 class CartController extends Controller
 {
-    /** {@inheritdoc} */
-    public static $hooks = [];
-
     /**
      * Class constructor
      */
@@ -28,6 +25,7 @@ class CartController extends Controller
 
         $this->assignTplVars(array(
             'cart_url' => Link::getControllerLink('Cart'),
+            'checkout_url' => Link::getControllerLink('Checkout'),
             'cart_content' => $cart->getCartContent(), 
             'cart_total' => $cart->getCartTotal()
         ));

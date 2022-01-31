@@ -78,6 +78,16 @@ class Cart
     }
 
     /**
+     * Returns whether is empty or not
+     * 
+     * @return bool Is cart empty
+     */
+    public function isEmpty()
+    {
+        return empty($this->cart_content);
+    }
+
+    /**
      * Adds product to cart
      * 
      * @param int $id_product Product ID
@@ -180,6 +190,15 @@ class Cart
         } else {
             self::$cart = new Cart($id_cart);
         }
+    }
+
+    /**
+     * Creates new instance of cart and assign it to current customer
+     */
+    public static function reinit()
+    {
+        Cookie::unset('id_cart');
+        self::init();
     }
 
     /**

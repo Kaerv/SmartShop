@@ -26,4 +26,5 @@
 </table>
 <h2>Total</h2>
 <h3><?= $cart_total ?> zł</h3>
+<a href="<?= $checkout_url ?>">Go to checkout</a>
 <?php include(template('partials/footer')) ?>
