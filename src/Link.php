@@ -21,11 +21,20 @@ class Link
     /**
      * Returns url to Controller
      * 
+     * @param string $name Name of controller;
+     * @param array $args GET args to be append to url
+     * 
      * @return string Url to Controller
      */
-    public static function getControllerLink($name) : string
+    public static function getControllerLink($name, $args = []) : string
     {
-        return self::getBaseUrl() . "?controller=$name";
+        $controller_url = self::getBaseUrl() . "?controller=$name";
+        
+        foreach ($args as $key => $value) {
+            $controller_url .= "&$key=$value";
+        }
+
+        return $controller_url;
     }
 
     /**

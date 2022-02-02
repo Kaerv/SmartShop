@@ -46,7 +46,9 @@ class CheckoutController extends Controller
     {
         if (isset($_POST['place_order'])) {
             Cart::reinit();
-            echo "Order placed";
+
+            header('Location: ' . Link::getControllerLink('ThankYou', []));
+            die();
         }
     }
 }
