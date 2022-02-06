@@ -91,13 +91,21 @@ class Db
      */
     public function insert($table, $data) 
     {
+        $data = array_map(function($el) {
+            if(is_string($el)) {
+                $el = "'". $el . "'";
+            }
+
+            return $el;
+        }, $data);
+
         $sql = "INSERT INTO $table";
         $sql .= " (";
         $sql .= implode(",", array_keys($data));
         $sql .= ") VALUES (";
         $sql .= implode(",", $data);
         $sql .= ")";
-
+        
         if($stmt = $this->conn->query($sql)) {
             return $this->conn->lastInsertId();
         }
