@@ -32,23 +32,11 @@ class CheckoutController extends Controller
         } 
 
         $this->assignTplVars(array(
-            'checkout_url' => Link::getControllerLink('Checkout'),
+            'place_order_url' => Link::getControllerLink('Order'),
             'cart_total' => Price::format($cart->getCartTotal()) 
         ));
 
         return parent::display();
     }
 
-    /**
-     * Process placing order
-     */
-    public function postProcess()
-    {
-        if (isset($_POST['place_order'])) {
-            Cart::reinit();
-
-            header('Location: ' . Link::getControllerLink('ThankYou', []));
-            die();
-        }
-    }
 }
