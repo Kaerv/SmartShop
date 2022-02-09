@@ -8,7 +8,7 @@ namespace SmartShop;
 class Order
 {
     /** @var int Order ID */
-    private $id;
+    public $id;
 
     /** @var int Cart ID */
     public $id_cart;
@@ -26,7 +26,7 @@ class Order
      */
     public function __construct($id = null)
     {
-        $this->$id = $id;
+        $this->id = $id;
     }
 
     /**
@@ -90,6 +90,29 @@ class Order
             $product->price,
             $cart_content['quantity']
         );
+    }
 
+    /**
+     * Returns all placed orders
+     * 
+     * @return array Orders
+     */
+    public static function getOrders()
+    {
+        $db = Db::getInstance();
+
+        $result = $db->query("SELECT * FROM ss_order");
+
+        $orders = array();
+        foreach($result as $o) {
+            $order = new Order($o['id_order']);
+            $order->id_cart = $o['id_cart'];
+            $order->total_price = $o['total_price'];
+            $order->date_placed = $o['date_placed'];
+
+            $orders[] = $order;
+        }
+
+        return $orders;
     }
 }
