@@ -26,7 +26,7 @@ class ProductListingController extends Controller
     {
         $this->assignTplVars(array(
             'products' => Product::getProducts(),
-            'add_to_cart_url' => Link::getAddToCartLink()
+            'add_to_cart_url' => Link::getControllerLink('Cart')
         ));
 
         return parent::display();

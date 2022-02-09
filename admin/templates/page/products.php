@@ -1,12 +1,16 @@
 <?php include(template('partials/header', true)) ?>
-<nav>
-    <span>Orders</span>
-<span>Products</span>
-</nav>
-<p></p>
+<h1>Products panel</h1>
 <table>
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Price</td>
+        </tr>
+    </thead>
     <?php foreach($products as $product): ?>
         <tr>
+            <td><?= $product->id ?></td>
             <td><?= $product->name ?></td>
             <td><?= $product->price ?></td>
         </tr>

@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartShop</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
         * {
             background-color: #333;
             color: #FFF;
+            font-family: 'Nunito';
         }
 
         input[type=button], input[type=submit], button {

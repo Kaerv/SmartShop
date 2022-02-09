@@ -9,16 +9,6 @@ namespace SmartShop;
 class Link
 {
     /**
-     * Returns url to "Add to cart" button
-     * 
-     * @return string Url to add to cart
-     */
-    public static function getAddToCartLink() : string
-    {
-        return self::getControllerLink('Cart');
-    }
-
-    /**
      * Returns url to Controller
      * 
      * @param string $name Name of controller;
@@ -29,22 +19,17 @@ class Link
     public static function getControllerLink($name, $args = []) : string
     {
         $controller_url = self::getBaseUrl() . "?controller=$name";
-        
-        foreach ($args as $key => $value) {
-            $controller_url .= "&$key=$value";
-        }
+        $controller_url .= self::buildGetVariables($args);
 
         return $controller_url;
     }
 
-    /**
-     * Returns url to product listing
-     * 
-     * @return string Url to product listing
-     */
-    public static function getProductListingLink() : string
+    public static function getAdminControllerLink($name, $args = []) : string 
     {
-        return self::getBaseUrl() . '?controller=ProductListing';
+        $controller_url = self::getAdminBaseUrl() . "?controller=$name";
+        $controller_url .= self::buildGetVariables($args);
+
+        return $controller_url;
     }
 
     /**
@@ -55,5 +40,32 @@ class Link
     private static function getBaseUrl() : string
     {
         return "http://" . $_SERVER['HTTP_HOST'] . "/";
+    }
+
+        /**
+     * Returns base url to admin panel: "http://example.com/admin"
+     * 
+     * @return string Base url
+     */
+    private static function getAdminBaseUrl() : string
+    {
+        return "http://" . $_SERVER['HTTP_HOST'] . "/admin/";
+    }
+
+    /**
+     * builds request URI from array of args
+     * 
+     * @param array $args Args to be passed to url
+     * 
+     * @return string Request URI
+     */
+    private static function buildGetVariables($args)
+    {
+        $query_string = "";
+        foreach ($args as $key => $value) {
+            $query_string .= "&$key=$value";
+        }
+
+        return $query_string;
     }
 }
