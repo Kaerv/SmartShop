@@ -31,11 +31,11 @@ function getTemplate(string $path, string $file, array $args = array()) {
 }
 
 /**
- * Prints content of template file
+ * Returns path to template file
  * 
  * @param string $template Path to template file
  */
-function template($template) {
+function template($template, $is_admin = false) {
     $template = str_replace(".php", "", $template);
-    return _TPL_DIR_ . $template . ".php";
+    return ($is_admin ? _ADMIN_TPL_DIR_ : _TPL_DIR_) . $template . ".php";
 }
