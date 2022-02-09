@@ -13,13 +13,20 @@
             font-family: Nunito;
         }
 
-        input[type=button], input[type=submit], button {
+        input {
             outline: none;
+            border: solid 2px #6d737e;
+            border-radius: 2px;
+            padding: 4px 2px;
+        }
+
+        input[type=button], input[type=submit], button {
             padding: 4px 6px;
-            border: solid 2px #2c313a;
+            border: solid 2px #6d737e;
             cursor: pointer;
             border-radius: 4px;
             transition: opacity 150ms ease 0s;
+            background-color: #39404e;
         }
 
         input[type=button]:hover, input[type=submit]:hover, button:hover {

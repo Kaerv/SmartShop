@@ -58,4 +58,20 @@ class Product
 
         return $products;
     }
+
+    /**
+     * Creates new product
+     * 
+     * @param string $name Product name
+     * @param float $price Product price
+     */
+    public static function add($name, $price)
+    {
+        $db = Db::getInstance();
+
+        return $db->insert('ss_product', [
+            'name' => $name,
+            'price' => $price
+        ]);
+    }
 }
