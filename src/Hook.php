@@ -12,14 +12,16 @@ class Hook
 
     /**
      * Collects all hooks to be called
+     * 
+     * @param string $name Base of controller name
      */
-    public static function init()
+    public static function init($name)
     {
         $classes = get_declared_classes();
         $controllers = [];
 
         foreach ($classes as $class) {
-            if (strpos($class, "Controller") !== false) {
+            if (strpos($class, $name) !== false) {
                 $controllers[] = $class;
             }
         }
@@ -32,7 +34,7 @@ class Hook
             }
         }
     }
-
+    
     /**
      * Execute functions assigned to hook
      */

@@ -42,7 +42,7 @@ abstract class Controller
      */
     public function display()
     {
-        return getTemplate($this->template, $this->tpl_vars);
+        return getTemplate(_TPL_DIR_, $this->template, $this->tpl_vars);
     }
 
     /**

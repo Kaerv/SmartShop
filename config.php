@@ -10,6 +10,7 @@ if($env == "development") {
 }
 
 define('_TPL_DIR_', __DIR__ . '/templates/');
+define('_ADMIN_TPL_DIR_', __DIR__ . '/admin/templates/');
 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'smartshop');
