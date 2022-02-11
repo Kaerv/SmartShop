@@ -40,6 +40,17 @@ class Product
             $this->formatted_price = Price::format($price);
         }
     }
+
+
+    /**
+     * Removes product from database
+     * 
+     */
+    public function remove()
+    {
+        $db = Db::getInstance();
+        $db->delete("ss_product", "id_product = $this->id");
+    }
     
     /**
      * Returns array with all products

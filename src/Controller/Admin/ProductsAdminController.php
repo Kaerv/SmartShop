@@ -34,6 +34,9 @@ class ProductsAdminController extends AdminController
                 $_POST['product_name'],
                 $_POST['product_price']
             );
+        } else if (isset($_POST['delete_product'])) {
+            $product = new Product($_POST['id_product']);
+            $product->remove();
         }
     }
 }

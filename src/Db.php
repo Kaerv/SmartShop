@@ -139,6 +139,23 @@ class Db
 
         return false;
     }
+    
+    /**
+     * Executes delete sql query
+     * 
+     * @param string $table SQL table 
+     * @param string $where SQL WHERE statement
+     * 
+     * @return int Affected rows
+     */
+    public function delete($table, $where)
+    {
+        $sql = "DELETE FROM $table WHERE $where";
+        if ($stmt = $this->conn->query($sql)) {
+            return $stmt->rowCount();
+        }
+    }
+
 
     /**
      * Returns instance of Db class
