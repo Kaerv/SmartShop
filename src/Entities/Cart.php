@@ -142,7 +142,7 @@ class Cart
      */
     public function isEmpty()
     {
-        return empty($this->cart_contents);
+        return $this->cart_contents->isEmpty();
     }
 
     /**
