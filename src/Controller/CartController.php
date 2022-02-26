@@ -3,8 +3,9 @@
 use SmartShop\Controller;
 use SmartShop\Link;
 use SmartShop\Cookie;
-use SmartShop\Cart;
 use SmartShop\Price;
+
+use Entities\Cart;
 
 class CartController extends Controller
 {
@@ -27,7 +28,7 @@ class CartController extends Controller
         $this->assignTplVars(array(
             'cart_url' => Link::getControllerLink('Cart'),
             'checkout_url' => Link::getControllerLink('Checkout'),
-            'cart_content' => $cart->getCartContent(), 
+            'cart_content' => $cart->getCartContents(), 
             'cart_total' => Price::format($cart->getCartTotal())
         ));
 
@@ -39,14 +40,21 @@ class CartController extends Controller
      */
     public function postProcess()
     {
+        global $entity_manager;
+
         $cart = Cart::getCurrentCart();
         if(isset($_POST['add_to_cart'])) {
             $cart->addProduct($_POST['id_product']);
         } elseif(isset($_POST['remove_from_cart'])) {
-            $cart->removeProduct($_POST['id_product']);
+            $cart_content = $cart->getCartContentByProductId($_POST['id_product']);
+            if($cart_content != false) {
+                $cart->removeCartContent($cart_content);
+                $entity_manager->remove($cart_content);
+            }
         }elseif(isset($_POST['update_quantity'])) {
             $cart_content = $cart->getCartContentByProductId($_POST['id_product']);
-            $cart->updateQuantity($cart_content['id_cart_content'], $_POST['quantity']);
+            $cart_content->setQuantity($_POST['quantity']);
+            $entity_manager->persist($cart_content);
         }
     }
 }

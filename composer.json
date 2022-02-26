@@ -3,7 +3,8 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "SmartShop\\": "src/"
+            "SmartShop\\": "src/",
+            "Entities\\": "src/Entities/"
         },
         "files": [
             "src/functions/template.php",
@@ -16,5 +17,9 @@
             "email": "34897885+Kaerv@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "doctrine/orm": "^2.11",
+        "symfony/cache": "^5.4",
+        "doctrine/annotations": "^1.13"
+    }
 }

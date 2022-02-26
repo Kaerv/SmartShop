@@ -3,21 +3,21 @@
 <table>
     <?php foreach($cart_content as $row): ?>
         <tr>
-            <td><?= $row['name'] ?></td>
-            <td><?= $row['formatted_price'] ?></td>
+            <td><?= $row->getProductName() ?></td>
+            <td><?= $row->getFormattedPrice() ?></td>
             <td>
                 <form action="<?= $cart_url ?>" method="POST">
-                    <input type="number" value="<?= $row['quantity'] ?>" name="quantity">
-                    <input type="hidden" name="id_product" value="<?= $row['id_product'] ?>">
+                    <input type="number" value="<?= $row->getQuantity() ?>" name="quantity">
+                    <input type="hidden" name="id_product" value="<?= $row->getIdProduct() ?>">
                     <input type="submit" name="update_quantity" value="Update">
                 </form>
             </td>
             <td>
-                <?= $row['formatted_subtotal'] ?>
+                <?= $row->getFormattedSubtotal() ?>
             </td>
             <td>
                 <form action="<?= $cart_url ?>" method="POST">
-                    <input type="hidden" name="id_product" value="<?= $row['id_product'] ?>">
+                    <input type="hidden" name="id_product" value="<?= $row->getIdProduct() ?>">
                     <input type="submit" name="remove_from_cart" value="Delete">
                 </form>
             </td>

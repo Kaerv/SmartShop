@@ -26,12 +26,13 @@
     </thead>
     <?php foreach($products as $product): ?>
         <tr>
-            <td><?= $product->id ?></td>
-            <td><?= $product->name ?></td>
-            <td><?= $product->price ?></td>
+            <td><?= $product->getId() ?></td>
+            <td><?= $product->getName() ?></td>
+            <td><?= $product->getPrice() ?></td>
+            <td><a href=""></a></td>
             <td>
                 <form action="<?= $products_url ?>" method="POST">
-                    <input type="hidden" name="id_product" value="<?= $product->id ?>">
+                    <input type="hidden" name="id_product" value="<?= $product->getId() ?>">
                     <input type="submit" name="delete_product" value="Delete">
                 </form>
             </td>

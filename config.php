@@ -18,3 +18,4 @@ define('DB_USER', 'root');
 define('DB_PASS', 'password');
 
 require_once "vendor/autoload.php";
+require_once "config/bootstrap.php";

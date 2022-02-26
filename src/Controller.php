@@ -31,7 +31,9 @@ abstract class Controller
 
     public function init()
     {
+        global $entity_manager;
         $output = $this->postProcess();
+        $entity_manager->flush();
         $output .= $this->display();
 
         return $output;

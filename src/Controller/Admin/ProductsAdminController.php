@@ -2,7 +2,7 @@
 
 use SmartShop\AdminController;
 use SmartShop\Link;
-use SmartShop\Product;
+use Entities\Product;
 
 class ProductsAdminController extends AdminController
 {
@@ -29,14 +29,21 @@ class ProductsAdminController extends AdminController
      */
     public function postProcess()
     {
+        global $entity_manager;
         if (isset($_POST['add_product'])) {
-            Product::add(
-                $_POST['product_name'],
-                $_POST['product_price']
-            );
+            $product = (new Product())
+                ->setName($_POST['product_name'])
+                ->setPrice($_POST['product_price']);
+            $entity_manager->persist($product);
         } else if (isset($_POST['delete_product'])) {
-            $product = new Product($_POST['id_product']);
-            $product->remove();
+
+            $product = $entity_manager
+            ->getRepository("Entities\Product")
+                ->findBy([
+                    'id' => $_POST['id_product'],
+                ]);
+
+            $entity_manager->remove($product[0]);
         }
     }
 }

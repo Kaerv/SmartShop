@@ -1,9 +1,10 @@
 <?php
 
-use SmartShop\Cart;
 use SmartShop\Controller;
 use SmartShop\Link;
-use SmartShop\Order;
+
+use Entities\Cart;
+use Entities\Order;
 
 /**
  * Manage orders

@@ -4,6 +4,8 @@ namespace SmartShop;
 
 use FFI\Exception;
 
+use Entities\Cart;
+
 /**
  * Initializes everything and load needed controller
  */
@@ -14,6 +16,8 @@ class Dispatcher
      */
     public static function dispatch()
     {
+        global $entity_manager;
+
         if (self::isAdmin()) {
             self::loadAdminControllers();
             $controllerName = ($_REQUEST['controller'] ?? "ProductsAdmin") . "Controller";
@@ -29,6 +33,8 @@ class Dispatcher
 
         $controller = new $controllerName();
         echo $controller->init();
+
+        $entity_manager->flush();
     }
 
     /**

@@ -10,9 +10,9 @@
     </thead>
     <?php foreach($orders as $order): ?>
         <tr>
-            <td><?= $order->id ?></td>
-            <td><?= $order->total_price ?></td>
-            <td><?= $order->date_placed ?></td>
+            <td><?= $order->getId() ?></td>
+            <td><?= $order->getTotalPrice() ?></td>
+            <td><?= $order->getDatePlaced()->format("Y-m-d H:i:s") ?></td>
         </tr>
     <?php endforeach; ?>
 </table>

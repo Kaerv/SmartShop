@@ -1,8 +1,8 @@
 <?php
 
 use SmartShop\AdminController;
-use SmartShop\Order;
-use SmartShop\Product;
+use Entities\Order;
+use Entities\Product;
 
 class OrdersAdminController extends AdminController
 {

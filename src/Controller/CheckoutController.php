@@ -1,9 +1,10 @@
 <?php
 
-use SmartShop\Cart;
 use SmartShop\Controller;
 use SmartShop\Link;
 use SmartShop\Price;
+
+use Entities\Cart;
 
 /**
  * Displays checkout page and processes orders

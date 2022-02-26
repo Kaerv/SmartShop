@@ -2,8 +2,9 @@
 
 use SmartShop\Controller;
 use SmartShop\Link;
-use SmartShop\Product;
 use SmartShop\Cart;
+
+use Entities\Product;
 
 /**
  * {@inheritdoc}
