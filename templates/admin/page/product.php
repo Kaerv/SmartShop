@@ -2,7 +2,7 @@
 
 <h1>Edit product</h1>
 
-<form action="" method="POST">
+<form action="<?= $form_url ?>" method="POST">
     <input type="hidden" name="product[id]" value="<?= $product['id'] ?>">
     <p>
         <label>Product name</label>
@@ -13,7 +13,7 @@
         <input type="number" name="product[price]" value="<?= $product['price'] ?>" step=0.01>
     </p>
     <p>
-        <input type="submit" name="submit_product" value="Save">
+        <input type="submit" name="edit_product" value="Save">
     </p>
 </form>
 

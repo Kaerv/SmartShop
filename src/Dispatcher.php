@@ -73,12 +73,38 @@ class Dispatcher
      */
     private static function loadControllers($name, $path)
     {
-        $controllers = scandir(__DIR__ . "/$path");
-
+        $controllers = self::scanControllers(__DIR__ . "/$path");
         foreach ($controllers as $controller) {
             if (strpos($controller, "$name") !== false) {
-                require_once(__DIR__ . "/$path/$controller");
+                require_once($controller);
             }
         }
+    }
+
+    /**
+     * Scan controllers dir for controller classes
+     * 
+     * @param string $path Dir path to scan
+     * 
+     * @return array<string> Array with controller names
+     */
+    private static function scanControllers($path)
+    {
+        $controllers = array();
+        
+        foreach (scandir($path) as $file_node) {
+            if(in_array($file_node, array('.', '..'))) {
+                continue;
+            }
+
+            $node_path = $path . "/$file_node";
+            if(is_dir($node_path)) {
+                $controllers = array_merge($controllers, self::scanControllers($node_path));
+            } else {
+                $controllers[] = $node_path;
+            }
+        }
+
+        return $controllers;
     }
 }

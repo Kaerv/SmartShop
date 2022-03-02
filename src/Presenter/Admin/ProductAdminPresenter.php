@@ -14,7 +14,8 @@ class ProductAdminPresenter extends AdminPresenter
         $object_arr = parent::present($object);
 
         $object_arr['edit_url'] = Link::getAdminControllerLink("ProductDetailsAdmin", array(
-            'id_product' => $object_arr['id']
+            'id_product' => $object_arr['id'],
+            'action' => 'edit'
         ));
 
         return $object_arr;
