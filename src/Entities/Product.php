@@ -15,40 +15,26 @@ class Product
      * @GeneratedValue
      * @Column(type="integer")
      */
-    private $id;
+    public $id;
     
     /** 
      * @Column(type="string")
      */
-    private $name;
+    public $name;
 
     /** 
      * @Column(type="float")
      */
-    private $price;
+    public $price;
 
     /**
-     * Gets all products
+     * Returns price with currency symbol
      * 
-     * @return array<Product> Array with all products
+     * @return string Formatted price
      */
-    public static function getProducts()
+    public function getFormattedPrice()
     {
-        global $entity_manager;
-        return $entity_manager->getRepository("Entities\Product")->findAll();
-    }
-
-    /**
-     * Search product by id
-     * 
-     * @param int $id Product ID
-     * 
-     * @return Product Product found
-     */
-    public static function getById($id)
-    {
-        global $entity_manager;
-        return $entity_manager->getRepository("Entities\Product")->find($id);
+        return Price::format($this->price);
     }
 
     /**
@@ -110,12 +96,26 @@ class Product
     }
 
     /**
-     * Returns price with currency symbol
+     * Gets all products
      * 
-     * @return string Formatted price
+     * @return array<Product> Array with all products
      */
-    public function getFormattedPrice()
+    public static function getProducts()
     {
-        return Price::format($this->price);
+        global $entity_manager;
+        return $entity_manager->getRepository("Entities\Product")->findAll();
+    }
+
+    /**
+     * Search product by id
+     * 
+     * @param int $id Product ID
+     * 
+     * @return Product Product found
+     */
+    public static function getById($id)
+    {
+        global $entity_manager;
+        return $entity_manager->getRepository("Entities\Product")->find($id);
     }
 }

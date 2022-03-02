@@ -61,7 +61,7 @@ class Dispatcher
      */
     private static function loadFrontControllers()
     {
-        self::loadControllers("Controller", "Controller");
+        self::loadControllers("Controller", "Controller/Front");
     }
 
     /**

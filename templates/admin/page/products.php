@@ -21,18 +21,19 @@
             <td>ID</td>
             <td>Name</td>
             <td>Price</td>
+            <td>Edit</td>
             <td>Delete</td>
         </tr>
     </thead>
     <?php foreach($products as $product): ?>
         <tr>
-            <td><?= $product->getId() ?></td>
-            <td><?= $product->getName() ?></td>
-            <td><?= $product->getPrice() ?></td>
-            <td><a href=""></a></td>
+            <td><?= $product['id'] ?></td>
+            <td><?= $product['name'] ?></td>
+            <td><?= $product['price'] ?></td>
+            <td><a class="btn" href="<?= $product['edit_url'] ?>">Edit</a></td>
             <td>
                 <form action="<?= $products_url ?>" method="POST">
-                    <input type="hidden" name="id_product" value="<?= $product->getId() ?>">
+                    <input type="hidden" name="id_product" value="<?= $product['id'] ?>">
                     <input type="submit" name="delete_product" value="Delete">
                 </form>
             </td>

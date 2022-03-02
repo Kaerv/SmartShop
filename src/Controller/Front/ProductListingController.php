@@ -5,6 +5,7 @@ use SmartShop\Link;
 use SmartShop\Cart;
 
 use Entities\Product;
+use SmartShop\Presenter\Front\ProductFrontPresenter;
 
 /**
  * {@inheritdoc}
@@ -25,8 +26,9 @@ class ProductListingController extends Controller
      */
     public function display()
     {
+        $products = ProductFrontPresenter::presentAll(Product::getProducts());
         $this->assignTplVars(array(
-            'products' => Product::getProducts(),
+            'products' => $products,
             'add_to_cart_url' => Link::getControllerLink('Cart')
         ));
 

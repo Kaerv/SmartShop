@@ -1,5 +1,6 @@
 <?php
 
+use SmartShop\Presenter\Admin\ProductAdminPresenter;
 use SmartShop\AdminController;
 use SmartShop\Link;
 use Entities\Product;
@@ -16,8 +17,9 @@ class ProductsAdminController extends AdminController
      */
     public function display()
     {
+        $products = ProductAdminPresenter::presentAll(Product::getProducts());
         $this->assignTplVars(array(
-            'products' => Product::getProducts(),
+            'products' => $products,
             'products_url' => Link::getAdminControllerLink('ProductAdmin'),
         ));
 

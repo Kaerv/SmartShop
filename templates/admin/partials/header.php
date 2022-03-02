@@ -20,16 +20,17 @@
             padding: 4px 2px;
         }
 
-        input[type=button], input[type=submit], button {
+        input[type=button], input[type=submit], button, a.btn {
             padding: 4px 6px;
             border: solid 2px #6d737e;
             cursor: pointer;
             border-radius: 4px;
             transition: opacity 150ms ease 0s;
             background-color: #39404e;
+            text-decoration: none;
         }
 
-        input[type=button]:hover, input[type=submit]:hover, button:hover {
+        input[type=button]:hover, input[type=submit]:hover, button:hover, a.btn:hover {
             opacity: 0.8;
         }
 

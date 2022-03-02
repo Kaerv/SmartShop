@@ -9,8 +9,8 @@ if($env == "development") {
     error_reporting(E_ALL);
 }
 
-define('_TPL_DIR_', __DIR__ . '/templates/');
-define('_ADMIN_TPL_DIR_', __DIR__ . '/admin/templates/');
+define('_TPL_DIR_', __DIR__ . '/templates/front/');
+define('_ADMIN_TPL_DIR_', __DIR__ . '/templates/admin/');
 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'smartshop');

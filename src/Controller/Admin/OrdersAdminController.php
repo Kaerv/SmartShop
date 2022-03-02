@@ -3,6 +3,7 @@
 use SmartShop\AdminController;
 use Entities\Order;
 use Entities\Product;
+use SmartShop\Presenter\Admin\OrderAdminPresenter;
 
 class OrdersAdminController extends AdminController
 {
@@ -16,8 +17,9 @@ class OrdersAdminController extends AdminController
      */
     public function display()
     {
+        $orders = OrderAdminPresenter::presentAll(Order::getOrders());
         $this->assignTplVars(array(
-            'orders' => Order::getOrders()
+            'orders' => $orders
         ));
 
         return parent::display();

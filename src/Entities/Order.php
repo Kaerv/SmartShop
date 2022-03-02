@@ -16,23 +16,23 @@ class Order
      * @GeneratedValue
      * @Column(type="integer")
      */
-    private $id;
+    public $id;
 
     /**
      * @OneToOne(targetEntity="Cart")
      * @JoinColumn(name="id_cart", referencedColumnName="id")
      */
-    private $cart;
+    public $cart;
 
     /**
      * @Column(type="float")
      */
-    private $total_price;
+    public $total_price;
 
     /**
      * @Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
-    private $date_placed;
+    public $date_placed;
 
     /**
      * Creating new order depends on Cart
