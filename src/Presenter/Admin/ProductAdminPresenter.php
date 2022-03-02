@@ -13,7 +13,7 @@ class ProductAdminPresenter extends AdminPresenter
     public static function present($object) {
         $object_arr = parent::present($object);
 
-        $object_arr['edit_url'] = Link::getAdminControllerLink("ProductDetails", array(
+        $object_arr['edit_url'] = Link::getAdminControllerLink("ProductDetailsAdmin", array(
             'id_product' => $object_arr['id']
         ));
 
