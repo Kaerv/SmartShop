@@ -18,5 +18,5 @@
         </tr>
     <?php endforeach; ?>
 </table>
-
+<?php include(template('partials/pagination', true)); ?>
 <?php include(template('partials/footer', true)); ?>

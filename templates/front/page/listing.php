@@ -13,14 +13,5 @@
         </div>
     </article>
 <?php endforeach; ?>
-
-<div class="pagination">
-    <?php foreach($pages as $index => $page): ?>
-        <a 
-        class="btn <?= $index == $current_page ? 'current' : '' ?>" 
-        <?php if ($index != $current_page): ?>href="<?= $page['url'] ?>" <?php endif; ?>>
-            <?= $index ?>
-        </a>
-    <?php endforeach; ?>
-</div>
+<?php include(template('partials/pagination')) ?>
 <?php include(template('partials/footer')) ?>

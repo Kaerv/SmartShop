@@ -28,10 +28,15 @@
             transition: opacity 150ms ease 0s;
             background-color: #39404e;
             text-decoration: none;
+            display: inline-block;
         }
 
-        input[type=button]:hover, input[type=submit]:hover, button:hover, a.btn:hover {
+        input[type=button]:hover, input[type=submit]:hover, button:hover, a.btn:hover:not(.current) {
             opacity: 0.8;
+        }
+
+        .btn.current {
+            color: #999;
         }
 
         table {
