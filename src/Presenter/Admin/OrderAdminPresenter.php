@@ -18,7 +18,7 @@ class OrderAdminPresenter extends AdminPresenter
             'id_order' => $object_arr['id']
         ));
         $object_arr['date_placed'] = $object_arr['date_placed']->format("Y-m-d H:i:s");
-        $object_arr['total_price'] = Price::format($object_arr['total_price']);
+        $object_arr['formatted_total_price'] = Price::format($object_arr['total_price']);
 
         $products = $object_arr['cart']->getCartContents()->toArray();
         $object_arr['products'] = array();
@@ -27,9 +27,11 @@ class OrderAdminPresenter extends AdminPresenter
             $object_arr['products'][] = array(
                 'id' => $product->getIdProduct(),
                 'name' => $product->getProductName(),
-                'price' => Price::format($product->getProductPrice()),
+                'price' => $product->getProductPrice(),
+                'formatted_price' => Price::format($product->getProductPrice()),
                 'quantity' => $product->getQuantity(),
-                'subtotal' => Price::format($product->getProductPrice() * $product->getQuantity())
+                'subtotal' => $product->getProductPrice() * $product->getQuantity(),
+                'formatted_subtotal' => Price::format($product->getProductPrice() * $product->getQuantity())
             );
         }
 

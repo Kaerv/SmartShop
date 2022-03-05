@@ -16,7 +16,7 @@
         <tr>
             <td><?= $product['id'] ?></td>
             <td><?= $product['name'] ?></td>
-            <td><?= $product['price'] ?></td>
+            <td><?= $product['formatted_price'] ?></td>
             <td><a class="btn" href="<?= $product['edit_url'] ?>">Edit</a></td>
             <td>
                 <form action="<?= $products_url ?>" method="POST">
