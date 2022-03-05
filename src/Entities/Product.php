@@ -100,10 +100,18 @@ class Product
      * 
      * @return array<Product> Array with all products
      */
-    public static function getProducts()
+    public static function getProducts($page, $limit)
     {
         global $entity_manager;
-        return $entity_manager->getRepository("Entities\Product")->findAll();
+
+        $page -= 1;
+
+        return $entity_manager->getRepository("Entities\Product")->findBy(
+            array(),
+            array('id' => 'ASC'),
+            $limit,
+            $page * $limit
+        );
     }
 
     /**
@@ -117,5 +125,24 @@ class Product
     {
         global $entity_manager;
         return $entity_manager->getRepository("Entities\Product")->find($id);
+    }
+
+    /**
+     * Counts all products
+     * 
+     * @return int Products count
+     */
+    public static function getProductsCount()
+    {
+        global $entity_manager;
+
+        $qb = $entity_manager->createQueryBuilder();
+
+        $qb->select($qb->expr()->count('p'))
+        ->from('Entities\Product', 'p');
+
+        $query = $qb->getQuery();
+
+        return $query->getSingleScalarResult();
     }
 }

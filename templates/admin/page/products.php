@@ -27,5 +27,4 @@
         </tr>
     <?php endforeach; ?>
 </table>
-
 <?php include(template('partials/footer', true)); ?>

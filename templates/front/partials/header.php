@@ -13,17 +13,23 @@
             font-family: 'Nunito';
         }
 
-        input[type=button], input[type=submit], button {
+        input[type=button], input[type=submit], button, a.btn {
             outline: none;
             padding: 4px 6px;
             border: solid 2px #555;
             cursor: pointer;
             border-radius: 4px;
             transition: opacity 150ms ease 0s;
+            display: inline-block;
+            text-decoration: none;
         }
 
-        input[type=button]:hover, input[type=submit]:hover, button:hover {
-            opacity: 0.8;
+        input[type=button]:hover, input[type=submit]:hover, button:hover, a.btn:hover:not(.current) {
+            opacity: 0.7;
+        }
+
+        .btn.current {
+            color: #999;
         }
     </style>
 </head>
