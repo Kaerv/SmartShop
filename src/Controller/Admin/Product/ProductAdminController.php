@@ -28,9 +28,12 @@ class ProductAdminController extends AdminController
 
             $entity_manager->persist($product);
         } elseif (isset($_POST['add_product'])) {
+            $product_data = $_POST['product'];
+            
             $product = (new Product())
-                ->setName($_POST['product_name'])
-                ->setPrice($_POST['product_price']);
+                ->setName($product_data['name'])
+                ->setPrice($product_data['price']);
+
             $entity_manager->persist($product);
         } elseif (isset($_POST['delete_product'])) {
             $product = Product::getById($_POST['id_product']);

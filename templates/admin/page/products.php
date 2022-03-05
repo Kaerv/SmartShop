@@ -1,19 +1,6 @@
 <?php include(template('partials/header', true)) ?>
 <h1>Products panel</h1>
-<h2>New product</h2>
-<form action="<?= $products_url ?>" method="POST">
-    <p>
-        <label>Product name</label> <br>
-        <input type="text" name="product_name">
-    </p>
-    <p>
-        <label>Product price</label> <br>
-        <input type="number" name="product_price" step="0.0001">
-    </p>
-    <p>
-        <input type="submit" name="add_product" value="Add product">
-    </p>
-</form>
+<a class="btn" href="<?= $new_product_url ?>">Add new product</a>
 <h2>Products list</h2>
 <table>
     <thead>

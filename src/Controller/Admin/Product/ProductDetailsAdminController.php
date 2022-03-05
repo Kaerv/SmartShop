@@ -17,11 +17,21 @@ class ProductDetailsAdminController extends AdminController
      */
     public function display()
     {
-        $product = Product::getById($_GET['id_product']);
-        $this->assignTplVars(array(
-            'product' => ProductAdminPresenter::present($product),
-            'form_url' => Link::getAdminControllerLink('ProductAdmin')
-        ));
+        $action = $_GET['action'];
+        if ($action == 'edit') {
+            $product = Product::getById($_GET['id_product']);
+            $this->assignTplVars(array(
+                'product' => ProductAdminPresenter::present($product),
+                'action' => 'edit_product',
+                'form_url' => Link::getAdminControllerLink('ProductAdmin')
+            ));
+        }
+        if ($action == 'add') {
+            $this->assignTplVars(array(
+                'action' => 'add_product',
+                'form_url' => Link::getAdminControllerLink('ProductAdmin')
+            ));
+        }
 
         return parent::display();
     }
