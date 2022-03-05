@@ -6,13 +6,15 @@
             <td>ID</td>
             <td>Total price</td>
             <td>Date placed</td>
+            <td>View</td>
         </tr>
     </thead>
     <?php foreach($orders as $order): ?>
         <tr>
             <td><?= $order['id'] ?></td>
             <td><?= $order['total_price'] ?></td>
-            <td><?= $order['date_placed']->format("Y-m-d H:i:s") ?></td>
+            <td><?= $order['date_placed'] ?></td>
+            <td><a class="btn" href="<?= $order['url'] ?>">View</a></td>
         </tr>
     <?php endforeach; ?>
 </table>

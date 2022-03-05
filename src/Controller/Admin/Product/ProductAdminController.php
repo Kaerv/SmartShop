@@ -8,7 +8,6 @@ class ProductAdminController extends AdminController
 {
     public function __construct()
     {
-        $this->template = "page/product";
     }
 
     /**
@@ -29,7 +28,7 @@ class ProductAdminController extends AdminController
             $entity_manager->persist($product);
         } elseif (isset($_POST['add_product'])) {
             $product_data = $_POST['product'];
-            
+
             $product = (new Product())
                 ->setName($product_data['name'])
                 ->setPrice($product_data['price']);

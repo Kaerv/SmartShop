@@ -1,15 +1,14 @@
 <?php
 
-use SmartShop\AdminController;
 use Entities\Order;
-use Entities\Product;
+use SmartShop\AdminController;
 use SmartShop\Presenter\Admin\OrderAdminPresenter;
 
-class OrdersAdminController extends AdminController
+class OrderAdminController extends AdminController
 {
     public function __construct()
     {
-        $this->template = "page/orders";
+        $this->template = "page/order";
     }
 
     /**
@@ -17,9 +16,8 @@ class OrdersAdminController extends AdminController
      */
     public function display()
     {
-        $orders = OrderAdminPresenter::presentAll(Order::getOrders());
         $this->assignTplVars(array(
-            'orders' => $orders
+            'order' => OrderAdminPresenter::present(Order::getById($_GET['id_order']))
         ));
 
         return parent::display();

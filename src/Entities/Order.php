@@ -81,6 +81,19 @@ class Order
         return $order_detail;
     }
 
+    /**
+     * Search product by id
+     * 
+     * @param int $id Product ID
+     * 
+     * @return Product Product found
+     */
+    public static function getById($id)
+    {
+        global $entity_manager;
+        return $entity_manager->getRepository("Entities\Order")->find($id);
+    }
+
     public static function getOrders()
     {
         global $entity_manager;
