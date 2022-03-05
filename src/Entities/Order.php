@@ -3,14 +3,20 @@
 namespace Entities;
 
 use DateTime;
+use SmartShop\Entity;
 
 /**
  * @Entity
  * @HasLifecycleCallbacks 
  * @Table(name="ss_order")
  */
-class Order 
+class Order extends Entity
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected static $repository = "Entities\Order";
+
     /** 
      * @Id
      * @GeneratedValue
@@ -79,25 +85,6 @@ class Order
 
         $entity_manager->persist($order_detail);
         return $order_detail;
-    }
-
-    /**
-     * Search product by id
-     * 
-     * @param int $id Product ID
-     * 
-     * @return Product Product found
-     */
-    public static function getById($id)
-    {
-        global $entity_manager;
-        return $entity_manager->getRepository("Entities\Order")->find($id);
-    }
-
-    public static function getOrders()
-    {
-        global $entity_manager;
-        return $entity_manager->getRepository("Entities\Order")->findAll();
     }
 
     /** 

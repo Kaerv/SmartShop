@@ -3,13 +3,19 @@
 namespace Entities;
 
 use SmartShop\Cookie;
+use SmartShop\Entity;
 
 /**
  * @Entity
  * @Table(name="ss_cart")
  */
-class Cart
+class Cart extends Entity
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected static $repository = "Entities\Cart";
+    
     /**
      * @Id
      * @GeneratedValue

@@ -17,7 +17,7 @@ class ProductsAdminController extends AdminController
      */
     public function display()
     {
-        $products = ProductAdminPresenter::presentAll(Product::getProducts());
+        $products = ProductAdminPresenter::presentAll(Product::getAll(1, 10));
         $this->assignTplVars(array(
             'products' => $products,
             'new_product_url' => Link::getAdminControllerLink('ProductDetailsAdmin', array('action' => 'add'))

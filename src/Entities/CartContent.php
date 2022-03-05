@@ -2,14 +2,20 @@
 
 namespace Entities;
 
+use SmartShop\Entity;
 use SmartShop\Price;
 
 /**
  * @Entity
  * @Table(name="ss_cart_content")
  */
-class CartContent
+class CartContent extends Entity
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected static $repository = "Entities\CartContent";
+
     /**
      * @Id
      * @GeneratedValue

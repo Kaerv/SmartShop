@@ -2,12 +2,19 @@
 
 namespace Entities;
 
+use SmartShop\Entity;
+
 /**
  * @Entity
  * @Table(name="ss_order_detail")
  */
-class OrderDetail
+class OrderDetail extends Entity
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected static $repository = "Entities\OrderDetail";
+
     /** 
      * @Id
      * @GeneratedValue

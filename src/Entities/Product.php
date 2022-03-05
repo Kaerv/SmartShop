@@ -2,14 +2,16 @@
 
 namespace Entities;
 
+use SmartShop\Entity;
 use SmartShop\Price;
 
 /**
  * @Entity
  * @Table(name="ss_product")
  */
-class Product
+class Product extends Entity
 {
+    protected static $repository = "Entities\Product";
     /** 
      * @Id
      * @GeneratedValue
@@ -93,56 +95,5 @@ class Product
     public function getPrice()
     {
         return $this->price;
-    }
-
-    /**
-     * Gets all products
-     * 
-     * @return array<Product> Array with all products
-     */
-    public static function getProducts($page, $limit)
-    {
-        global $entity_manager;
-
-        $page -= 1;
-
-        return $entity_manager->getRepository("Entities\Product")->findBy(
-            array(),
-            array('id' => 'ASC'),
-            $limit,
-            $page * $limit
-        );
-    }
-
-    /**
-     * Search product by id
-     * 
-     * @param int $id Product ID
-     * 
-     * @return Product Product found
-     */
-    public static function getById($id)
-    {
-        global $entity_manager;
-        return $entity_manager->getRepository("Entities\Product")->find($id);
-    }
-
-    /**
-     * Counts all products
-     * 
-     * @return int Products count
-     */
-    public static function getProductsCount()
-    {
-        global $entity_manager;
-
-        $qb = $entity_manager->createQueryBuilder();
-
-        $qb->select($qb->expr()->count('p'))
-        ->from('Entities\Product', 'p');
-
-        $query = $qb->getQuery();
-
-        return $query->getSingleScalarResult();
     }
 }
